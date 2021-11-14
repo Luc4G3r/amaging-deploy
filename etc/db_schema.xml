@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="amaging_deploy">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" comment="Deploy Id"/>
+        <column xsi:type="varbinary" name="uuid" nullable="true" length="255" comment="UUID"/>
+        <column xsi:type="int" name="mode" unsigned="true" nullable="false" comment="Deploy mode"/>
+        <column xsi:type="timestamp" name="scheduled_at" comment="Scheduled at"/>
+        <column xsi:type="timestamp" name="started_at" comment="Started at"/>
+        <column xsi:type="timestamp" name="finished_at" comment="Finished at"/>
+        <column xsi:type="boolean" name="error" nullable="true" comment="Error"/>
+        <column xsi:type="varchar" name="message" nullable="true" length="255" comment="Message"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="MAGENTO_DEPLOY_UUID">
+            <column name="uuid"/>
+        </constraint>
+    </table>
+</schema>
