@@ -9,6 +9,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Framework\Filesystem\DirectoryList;
 use Magento\Framework\ShellInterface;
+use Magento\Framework\App\Shell;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -29,13 +30,14 @@ class Deploy
         DirectoryList $directoryList,
         Application $application,
         Data $data,
+        Shell $shell,
         //ShellInterface $shell,
         LoggerInterface $logger
     ) {
         $this->directoryList = $directoryList;
         $this->application = $application;
         $this->data = $data;
-        //$this->shell = $shell;
+        $this->shell = $shell;
         $this->logger = $logger;
     }
 

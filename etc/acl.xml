@@ -4,11 +4,6 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::system">
-                    <!--
-                    <resource id="INblau_BackendMenu::top_level" title="INblau Menu" translate="title">
-                        <resource id="INblau_BackendMenu::config_cron" title="Cron Settings" translate="title"/>
-                    </resource>
-                    -->
                 </resource>
             </resource>
         </resources>

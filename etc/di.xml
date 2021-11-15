@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Luc4G3r\AmagingDeploy\Api\Data\DeployInterface" type="Luc4G3r\AmagingDeploy\Model\Deploy"/>
+    <preference for="Luc4G3r\AmagingDeploy\Api\Data\DeployRepositoryInterface"
+                type="Luc4G3r\AmagingDeploy\Model\DeployRepository"/>
+    <preference for="Luc4G3r\AmagingDeploy\Api\Data\DeploySearchResultInterface"
+                type="Luc4G3r\AmagingDeploy\Model\DeploySearchResult"/>
+</config>

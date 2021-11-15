@@ -2,25 +2,17 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <!--
-        TODO:
-            * integrate fast switch to config section
-            * integrate link to deploy grid
-        -->
-        <!--
-        <add id="INblau_BackendMenu::INblau"
-             title="INblau"
-             module="INblau_BackendMenu"
-             sortOrder="9999"
-             resource="Magento_Backend::content" />
-        <add id="INblau_DocumentStorage::documentStorage"
-             title="Dokumenten Speicher | Einstellungen"
-             module="INblau_DocumentStorage"
-             sortOrder="0"
-             parent="INblau_BackendMenu::INblau"
-             resource="Inblau_DocumentStorage::documentStorage"
-             action="adminhtml/system_config/edit/section/inblau_document_storage/"
-        />
-        -->
+        <add id="Luc4G3r_AmagingDeploy::Luc4G3r"
+             title="Luc4G3r"
+             module="Luc4G3r_AmagingDeploy"
+             sortOrder="5000"
+             resource="Magento_Backend::content"/>
+        <add id="Luc4G3r_AmagingDeploy::settings_general"
+             title="Settings"
+             module="Luc4G3r_AmagingDeploy"
+             sortOrder="10"
+             parent="Luc4G3r_AmagingDeploy::Luc4G3r"
+             resource="Luc4G3r_AmagingDeploy::settings_general"
+             action="adminhtml/system_config/edit/section/amg_deploy/"/>
     </menu>
 </config>

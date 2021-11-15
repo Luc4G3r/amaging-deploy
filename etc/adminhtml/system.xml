@@ -2,10 +2,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="amg_deploy" translate="label" class="separator-top" sortOrder="400">
+        <tab id="amg_deploy" translate="label" sortOrder="400">
             <label>Amaging Deploy</label>
         </tab>
-        <section id="configuration" translate="label" sortOrder="400" showInDefault="1" showInWebsite="0"
+        <section id="amg_deploy_configuration" translate="label" sortOrder="400" showInDefault="1" showInWebsite="0"
                  showInStore="0">
             <label>
                 Deploy Configuration
@@ -22,104 +22,38 @@
                 </field>
                 <field id="last_deploy">
                     <label>Time of last deploy</label>
+                    <source_model>Luc4G3r\AmagingDeploy\Model\Config\Source\LastDeploy</source_model>
                     <tooltip>This value is automatically set when deploying.</tooltip>
                 </field>
                 <field id="default_deploy_mode" translate="label" type="select" sortOrder="0">
                     <label>Default deploy mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
             </group>
             <group id="adminhtml" translate="label" type="text" sortOrder="20">
                 <label>Adminhtml</label>
-                <!--
-                <comment>General settings for deployment</comment>
-                <field id="enabled" translate="label,comment" type="select" sortOrder="10">
-                    <label>Active</label>
+                <field id="show_message" translate="label,comment" type="select" sortOrder="10">
+                    <label>Show message</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                    <comment>Enable this extension</comment>
+                    <comment>Show message to backend users about deploy taking place soon</comment>
                 </field>
-                <field id="last_deploy">
-                    <label>Time of last deploy</label>
-                    <tooltip>This value is automatically set when deploying.</tooltip>
-                </field>
-                <field id="default_deploy_mode" translate="label" type="select" sortOrder="0">
-                    <label>Default deploy mode</label>
-                </field>
-                -->
             </group>
             <group id="frontend" translate="label" type="text" sortOrder="30">
                 <label>Frontend</label>
-                <!--
-                <comment>General settings for deployment</comment>
-                <field id="enabled" translate="label,comment" type="select" sortOrder="10">
-                    <label>Active</label>
+                <field id="show_message" translate="label,comment" type="select" sortOrder="10">
+                    <label>Show message</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                    <comment>Enable this extension</comment>
+                    <comment>Show message to frontend users about deploy taking place soon</comment>
                 </field>
-                <field id="last_deploy">
-                    <label>Time of last deploy</label>
-                    <tooltip>This value is automatically set when deploying.</tooltip>
-                </field>
-                <field id="default_deploy_mode" translate="label" type="select" sortOrder="0">
-                    <label>Default deploy mode</label>
-                </field>
-                -->
             </group>
             <group id="reports" translate="label" type="text" sortOrder="40">
                 <label>Reports</label>
-                <!--
-                <comment>Reporting settings</comment>
-                <field id="enabled" translate="label,comment" type="select" sortOrder="10">
-                    <label>Active</label>
+                <field id="enable" translate="label,comment" type="select" sortOrder="10">
+                    <label>Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                    <comment>Enable this extension</comment>
-                </field>
-                <field id="last_deploy">
-                    <label>Time of last deploy</label>
-                    <tooltip>This value is automatically set when deploying.</tooltip>
-                </field>
-                <field id="default_deploy_mode" translate="label" type="select" sortOrder="0">
-                    <label>Default deploy mode</label>
-                </field>
-                -->
-            </group>
-        </section>
-        <!--
-        TODO:
-            * add all configurable fields here
-        -->
-        <!--
-        <section id="inblau_document_storage" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
-            <class>separator-top</class>
-            <label>Datei Speicher</label>
-            <tab>inblau_backend</tab>
-            <resource>Inblau_DocumentStorage::documentStorage</resource>
-            <group id="invoice" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                <label>Rechnung</label>
-                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Ablegen der Rechnung als Datei</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>Die Rechnungen werden nach dem Generieren auf dem Server abgelegt.</comment>
-                </field>
-
-                <field id="path" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Pfad für Rechnungen</label>
-                    <comment>Ein / am Anfang zeigt einen absoluten Pfad auf dem Server an. Ohne wird vom Root des Shopverzeichnis ausgegangen</comment>
-                </field>
-            </group>
-            <group id="creditmemo" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                <label>Gutschrift</label>
-                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Ablegen der Gutschrift als Datei</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>Die Gutschriften werden nach dem Generieren auf dem Server abgelegt.</comment>
-                </field>
-
-                <field id="path" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Pfad für Gutschriften</label>
-                    <comment>Ein / am Anfang zeigt einen absoluten Pfad auf dem Server an. Ohne wird vom Root des Shopverzeichnis ausgegangen</comment>
+                    <comment>Enable reporting</comment>
                 </field>
             </group>
         </section>
-        -->
     </system>
 </config>

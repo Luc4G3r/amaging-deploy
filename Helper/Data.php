@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Luc4Ger\AmagingDeploy\Helper;
 
 use DateTime;
+use Luc4G3r\AmagingDeploy\Api\Data\DeployInterface;
+use Luc4G3r\AmagingDeploy\Model\DeployRepository;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 
@@ -15,20 +17,11 @@ class Data
     public const ENABLED = 'enabled';
     /** is scheduled */
     public const SCHEDULED = 'scheduled';
-    /**
-     * schedule time
-     *
-     * used for deploy, as well as maintenance display
-     */
-    public const SCHEDULED_AT = 'scheduled_at';
-    /** time of last deploy */
-    private const LAST_DEPLOY = 'last_deploy';
     /** default value of deploy mode */
     private const DEFAULT_DEPLOY_MODE = 'default_deploy_mode';
     /** deploy mode */
     private const MODE = 'mode';
     /** state of current deploy */
-    private const CURRENT_STATE = 'current_state';
     private const INFO_MAIL = 'info_mail';
     private const REPORT_MAIL = 'report_mail';
     private const ERROR_MAIL = 'error_mail';
@@ -41,16 +34,19 @@ class Data
 
     private ScopeConfigInterface $scopeConfig;
     private WriterInterface $configWriter;
+    private DeployRepository $deployRepository;
     private ?bool $isEnabled = null;
     private ?bool $isScheduled = null;
-    private ?int $currentState = null;
+    private ?DeployInterface $deploy = null;
 
     public function __construct(
         ScopeConfigInterface $scopeConfig,
-        WriterInterface $configWriter
+        WriterInterface $configWriter,
+        DeployRepository $deployRepository
     ) {
         $this->scopeConfig = $scopeConfig;
         $this->configWriter = $configWriter;
+        $this->deployRepository = $deployRepository;
     }
 
     public function getIsEnabled(): bool
@@ -75,37 +71,39 @@ class Data
         return $this->isScheduled;
     }
 
-    public function getCurrentState(): int
+    public function getCurrentState(): ?int
     {
-        if (null === $this->currentState) {
-            $this->currentState = (int) $this->scopeConfig->getValue(
-                self::SETTINGS_PATH . self::CURRENT_STATE,
-                ScopeConfigInterface::SCOPE_TYPE_DEFAULT
-            );
+        $deploy = $this->getDeploy();
+
+        return (null === $deploy) ? null : $deploy->getCurrentState();
+    }
+
+    private function getDeploy(): ?DeployInterface
+    {
+        if (null === $this->deploy) {
+            $this->deploy = $this->getLatestDeploy();
         }
-        return $this->currentState;
+        return $this->deploy;
+    }
+
+    protected function getLatestDeploy(): ?DeployInterface
+    {
+        return $this->deployRepository->getLatest();
     }
 
     public function setCurrentState(int $state): void
     {
-        $this->configWriter->save(
-            self::SETTINGS_PATH . self::CURRENT_STATE,
-            $state
-        );
+        $deploy = $this->getDeploy();
+
+        if (null !== $deploy) {
+            $deploy->setCurrentState($state);
+        }
     }
 
     public function getScheduledAt(): ?DateTime
     {
-        $scheduledAt = $this->scopeConfig->getValue(
-            self::SETTINGS_PATH . self::SCHEDULED_AT,
-            ScopeConfigInterface::SCOPE_TYPE_DEFAULT
-        );
-        try {
-            return new DateTime($scheduledAt);
-        } catch (\Exception $exception) {
-            // TODO
-            //  log this (WARNING)
-            return null;
-        }
+        $deploy = $this->getDeploy();
+
+        return (null === $deploy) ? null : $deploy->getScheduledAt();
     }
 }
