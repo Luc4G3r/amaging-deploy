@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="amg_deploy" translate="label" sortOrder="400">
+            <label>Amaging Deploy</label>
+        </tab>
+        <section id="amg_deploy_configuration" translate="label" sortOrder="400" showInDefault="1" showInWebsite="0"
+                 showInStore="0">
+            <label>
+                Deploy Configuration
+            </label>
+            <tab>amg_deploy</tab>
+            <resource>Luc4G3r_AmagingDeploy::settings_general</resource>
+            <group id="general" translate="label" type="text" sortOrder="10">
+                <label>General</label>
+                <comment>General settings for deployment</comment>
+                <field id="enabled" translate="label,comment" type="select" sortOrder="10">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>Enable this extension</comment>
+                </field>
+                <field id="last_deploy">
+                    <label>Time of last deploy</label>
+                    <source_model>Luc4G3r\AmagingDeploy\Model\Config\Source\LastDeploy</source_model>
+                    <tooltip>This value is automatically set when deploying.</tooltip>
+                </field>
+                <field id="default_deploy_mode" translate="label" type="select" sortOrder="0">
+                    <label>Default deploy mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="adminhtml" translate="label" type="text" sortOrder="20">
+                <label>Adminhtml</label>
+                <field id="show_message" translate="label,comment" type="select" sortOrder="10">
+                    <label>Show message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>Show message to backend users about deploy taking place soon</comment>
+                </field>
+            </group>
+            <group id="frontend" translate="label" type="text" sortOrder="30">
+                <label>Frontend</label>
+                <field id="show_message" translate="label,comment" type="select" sortOrder="10">
+                    <label>Show message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>Show message to frontend users about deploy taking place soon</comment>
+                </field>
+            </group>
+            <group id="reports" translate="label" type="text" sortOrder="40">
+                <label>Reports</label>
+                <field id="enable" translate="label,comment" type="select" sortOrder="10">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>Enable reporting</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

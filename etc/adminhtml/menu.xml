@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Luc4G3r_AmagingDeploy::Luc4G3r"
+             title="Luc4G3r"
+             module="Luc4G3r_AmagingDeploy"
+             sortOrder="5000"
+             resource="Magento_Backend::content"/>
+        <add id="Luc4G3r_AmagingDeploy::settings_general"
+             title="Settings"
+             module="Luc4G3r_AmagingDeploy"
+             sortOrder="10"
+             parent="Luc4G3r_AmagingDeploy::Luc4G3r"
+             resource="Luc4G3r_AmagingDeploy::settings_general"
+             action="adminhtml/system_config/edit/section/amg_deploy/"/>
+    </menu>
+</config>

@@ -1,0 +1,28 @@
+{
+    "name": "luc4g3r/magento2-amaging-deploy",
+    "description": "Magento 2 Deployment Module",
+    "require": {
+        "magento/product-community-edition": ">= 2.4.0",
+        "php": ">= 7.4 < 8.0"
+    },
+    "type": "magento2-module",
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "name": "Luca Gerhardt",
+            "email": "luc4.g3r@gmail.com",
+            "homepage": "https://github.com/Luc4G3r",
+            "role": "Maintainer"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Luc4G3r\\AmagingDeploy\\": ""
+        }
+    }
+}
