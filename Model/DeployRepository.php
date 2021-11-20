@@ -6,7 +6,6 @@ namespace Luc4G3r\AmagingDeploy\Model;
 use Luc4G3r\AmagingDeploy\Api\Data\DeployInterface;
 use Luc4G3r\AmagingDeploy\Api\Data\DeployRepositoryInterface;
 use Luc4G3r\AmagingDeploy\Api\Data\DeploySearchResultInterfaceFactory;
-use Luc4G3r\AmagingDeploy\Model\DeployFactory;
 use Luc4G3r\AmagingDeploy\Model\ResourceModel\Deploy\Collection;
 use Luc4G3r\AmagingDeploy\Model\ResourceModel\Deploy\CollectionFactory;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -62,6 +61,22 @@ class DeployRepository implements DeployRepositoryInterface
         return $collection->getFirstItem();
     }
 
+    public function getLatestFinished(): ?DeployInterface
+    {
+        $collection = $this->getCollection();
+
+        $collection->addFieldToFilter(
+            'finished_at',
+            ['neq' => null]
+        );
+
+        $collection->addOrder(
+            'id',
+            BaseCollection::SORT_ORDER_DESC
+        );
+
+        return $collection->getFirstItem();
+    }
 
     public function save(DeployInterface $deploy): void
     {
